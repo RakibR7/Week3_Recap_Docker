@@ -1,9 +1,6 @@
 package atu.ie.week3_recap_docker;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,12 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    @NotNull
-    private float id;
-    @NotBlank
-    @Size(min = 1, max=16, message = "Name must be between max (1-16)")
+    @NotEmpty
+    private long id;
+    @NotBlank(message = "invalid must have name")
+    @Size(min = 1, max=25, message = "Name must be between 1 to 25")
     private String name;
-    @PositiveOrZero
-    private float price;
+    @Positive
+    private double price;
 }
-
